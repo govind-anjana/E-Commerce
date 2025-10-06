@@ -10,6 +10,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import {addToCart} from '../Redux/CardSlice'
 import { NavLink } from "react-router-dom";
+import axiosInstance from '../Api/AxiosConfig'
 
 function ShopFrom() {
   const [names, setNames] = useState("Mobile");
@@ -18,10 +19,9 @@ function ShopFrom() {
   const dispatch=useDispatch()
   const ShowProduct = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/ShowCategories");
+      const res = await axiosInstance.get("/api/ShowCategories");
       console.log(res.data.data);
-      // const cate=await axios.get("https://dummyjson.com/products/search?q=phone")
-      // console.log(cate.data[products]);
+     
       setProducts(res.data.data);
     } catch (err) {
       console.error("Error fetching products:", err);
