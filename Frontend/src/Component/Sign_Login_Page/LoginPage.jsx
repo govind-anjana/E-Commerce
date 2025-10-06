@@ -6,35 +6,35 @@ import { FaAngleLeft } from "react-icons/fa6";
 import { useState } from "react";
 import axios from "axios";
 function LoginPage() {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-     email: "",
-  password: "",
+    email: "",
+    password: "",
   });
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     axios
       .post("http://localhost:4000/api/login", formData)
       .then((res) => {
-       
-        console.log("login Successfully",res);
-          localStorage.setItem("token", res.data.token);
-           localStorage.setItem("user", JSON.stringify(res.data.user));
-        navigate("/",);
+        console.log("login Successfully", res);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        navigate("/");
+        window.location.reload();
       })
       .catch((err) => alert("Wrong Password Please Try Again"));
-        setFormData({email:'',password:''})
+    setFormData({ email: "", password: "" });
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
       <div className="w-full max-w-4xl flex justify-between items-center p-4 bg-white shadow-md my-6">
         <button className="font-semibold flex cursor-pointer">
-          <FaAngleLeft size={29} onClick={() => navigate(-1)}/>
+          <FaAngleLeft size={29} onClick={() => navigate(-1)} />
           <span>Back</span>
         </button>
         <button className="font-semibold">
@@ -87,7 +87,7 @@ function LoginPage() {
             id="pass"
             name="password"
             onChange={handleChange}
-             value={formData.password}
+            value={formData.password}
             placeholder="Enter Your Password"
             className="border p-2 rounded-md w-full focus:outline-amber-400"
           />

@@ -20,7 +20,6 @@ function Profile() {
   const [Oactive, setOactive] = useState("Items");
   const [showOrder, setShowOrder] = useState(true);
   const [errors, setErrors] = useState({});
-   
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -46,6 +45,7 @@ function Profile() {
       localStorage.removeItem("user");
       localStorage.removeItem("token");
       navigate("/");
+      window.location.reload();
     }
   }, [active]);
   const handleChange = (e) => {
