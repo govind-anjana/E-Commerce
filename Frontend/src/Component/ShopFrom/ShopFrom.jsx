@@ -20,7 +20,7 @@ function ShopFrom() {
   const ShowProduct = async () => {
     try {
       const res = await axiosInstance.get("/api/ShowCategories");
-      console.log(res.data.data);
+      // console.log(res.data.data);
      
       setProducts(res.data.data);
     } catch (err) {
@@ -83,9 +83,9 @@ function ShopFrom() {
           <p>No products found for {names}</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            {filteredProducts.map((product) => (
+            {filteredProducts.map((product,index) => (
               <div
-                key={product.id}
+                key={index}
                 className=" rounded-lg p-3 shadow-sm hover:shadow-lg transition"
               ><NavLink to="/Details" state={{items:product}}>
                 <img
@@ -96,7 +96,7 @@ function ShopFrom() {
                   {product.name}
                 </h3>
 
-                <h3 className="mt-2 font-semibold text-start text-sm">
+                <h3 className="my-2 font-semibold text-start text-sm">
                   <span className="text-base">
                     {" "}
                     ₹
@@ -115,7 +115,7 @@ function ShopFrom() {
                   </p>{" "}
                 </h3>
                 <button
-                  className="mt-4  px-4 py-1 bg-gray-900 text-white rounded hover:bg-gray-600 transition w-full font-semibold cursor-pointer"
+                  className="mt-4 px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-600 transition w-full font-semibold cursor-pointer"
                   onClick={() => dispatch(addToCart(product))}
                 >
                   Add to Cart

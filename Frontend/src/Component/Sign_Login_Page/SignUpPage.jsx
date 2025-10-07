@@ -4,30 +4,26 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { FaAngleLeft } from "react-icons/fa6";
 import { useState } from "react";
-import axios from "axios";
+import axiosInstance from "../Api/AxiosConfig";
 function SignUpPage() {
-  const navigate=useNavigate();
-  // const [name,setName]=useState("");
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({});
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
- function handleSubmit(e) {
-  e.preventDefault();
-  console.log("Form submitted!", formData);
+  function handleSubmit(e) {
+    e.preventDefault();
 
-  axios
-    .post("http://localhost:4000/api/signup", formData) 
-    .then((res) => {
-       
-       alert("Successfully User Sign Up Please Login Again");
-       navigate('/Login')
-    })
-    .catch((err) => {
-      console.error("Error:", err.response ? err.response.data : err.message);
-    });
-
-}
+    axiosInstance
+      .post("/api/signup", formData)
+      .then((res) => {
+        alert("Successfully User Sign Up Please Login Again");
+        navigate("/Login");
+      })
+      .catch((err) => {
+        console.error("Error:", err.response ? err.response.data : err.message);
+      });
+  }
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
       <div className="w-full max-w-4xl flex justify-between items-center p-4 bg-white shadow-md my-6">

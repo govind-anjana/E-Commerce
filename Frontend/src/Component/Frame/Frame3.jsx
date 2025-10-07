@@ -11,13 +11,13 @@ import { NavLink } from "react-router-dom";
 function Frame3() {
   const [products,setProducts]=useState([])
   const dispatch = useDispatch();
-  useEffect(()=>{
-    const fetchapi=async()=>{
-      const res=await axios.get("http://localhost:4000/api/ShowProduct");
-       setProducts(res.data.data); 
-  }
-  fetchapi();
-  },[]);
+  // useEffect(()=>{
+  //   const fetchapi=async()=>{
+  //     const res=await axios.get("http://localhost:4000/api/ShowProduct");
+  //      setProducts(res.data.data); 
+  // }
+  // fetchapi();
+  // },[]);
   const product = [
     { id: 1, name: "Adidas 4DFWD X", img: Remdi, price: 11999, qty: 1,dis:5 },
     { id: 2, name: "Poco Air Zoom", img: Poco, price: 13999, qty: 1,dis:8 },
@@ -36,9 +36,9 @@ function Frame3() {
         {product.map((item,index) => (
           <div
             key={index}
-            className="flex-none w-[240px] rounded-lg shadow hover:shadow-lg transition overflow-hidden"
+            className="flex-none w-[200px] rounded-lg shadow hover:shadow-lg transition overflow-hidden"
           >
-            <div className="w-full p-8 h-66 flex justify-center items-center bg-gray-100 rounded">
+            <div className="w-full p-5 h-50 flex justify-center items-center bg-gray-100 rounded">
               <NavLink to="/Details" state={{items:item}}>
               <img
                 src={item.img}

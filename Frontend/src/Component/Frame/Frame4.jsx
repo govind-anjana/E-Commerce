@@ -15,7 +15,7 @@ import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import {NavLink, useNavigate} from 'react-router-dom';
 
 function Frame4() {
-  const navigator=useNavigate();
+   
  
   const products = [
     { id: 1, name: "Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear", price: 22300, img: Drown,dis:33 },

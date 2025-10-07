@@ -13,16 +13,11 @@ function Header() {
   const cartItems = useSelector((state) => state.cart.items);
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
-    console.log(storedUser);
     if (storedUser) {
       const user = JSON.parse(storedUser);
       setUser(user);
-      console.log(user)
-      // console.log("User object:", user);
-      // console.log("User name:", user.name);
-    }
-    else{
-      setUser(null)
+    } else {
+      setUser(null);
     }
   }, []);
   const categories = [
@@ -46,7 +41,9 @@ function Header() {
     "Home Improvement": ["Tools", "Decor"],
     "Sports, Toys & Luggage": ["Sports", "Toys", "Bags"],
   };
-   
+  function handleManu() {
+    setMenuOpen(!menuOpen);
+  }
 
   return (
     <header className="bg-gray-50 w-full sticky top-0 z-50">
@@ -68,30 +65,27 @@ function Header() {
           >
             MY Deals
           </NavLink>
-           
-            {user ? (
-              <NavLink
-            to={`/Profile/${user.id}`}
-            state={{user}}
-             
-            className={({ isActive }) =>
-              isActive ? "text-yellow-600 font-bold" : "hover:text-yellow-600"
-            }
-          >
-           <FaUser size={20} className="inline"/> {user.name}
-          </NavLink>
-            ) : (
-              <NavLink
-                to="/login"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-yellow-600 font-bold"
-                    : "hover:text-yellow-600"
-                }
-              >
-                Sign Up / Sign In{" "}
-              </NavLink>
-            )}
+
+          {user ? (
+            <NavLink
+              to={`/Profile/${user.id}`}
+              state={{ user }}
+              className={({ isActive }) =>
+                isActive ? "text-yellow-600 font-bold" : "hover:text-yellow-600"
+              }
+            >
+              <FaUser size={20} className="inline" /> {user.name}
+            </NavLink>
+          ) : (
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive ? "text-yellow-600 font-bold" : "hover:text-yellow-600"
+              }
+            >
+              Sign Up / Sign In{" "}
+            </NavLink>
+          )}
           <div className="flex items-center gap-1 cursor-pointer">
             <NavLink
               to="/Card"
@@ -103,12 +97,8 @@ function Header() {
               <sup className="text-lg ">{cartItems.length}</sup>
             </NavLink>
           </div>
-          
         </nav>
-        <button
-          className="md:hidden text-2xl"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
+        <button className="md:hidden text-2xl" onClick={handleManu}>
           {menuOpen ? <HiX /> : <HiMenu />}
         </button>
       </div>
@@ -121,15 +111,61 @@ function Header() {
             className="w-full border border-black p-2 rounded focus:outline-none focus:border-blue-500 font-normal font-serif my-3"
           />
 
-          <a href="#" className="block py-2 border-b">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `block py-1 ${
+                isActive ? "text-yellow-600 font-bold" : "hover:text-yellow-600"
+              }`
+            }
+            onClick={handleManu}
+          >
             MY Deals
-          </a>
-          <a href="#" className="block py-2 border-b">
-            Sign Up / Sign In
-          </a>
-          <a href="#" className="py-2 border-b flex items-center gap-1">
-            <AiOutlineShoppingCart /> Cart
-          </a>
+          </NavLink>
+
+          {user ? (
+            <NavLink
+              to={`/Profile/${user.id}`}
+              state={{ user }}
+              onClick={handleManu}
+              className={({ isActive }) =>
+                `block py-1 ${
+                  isActive
+                    ? "text-yellow-600 font-bold"
+                    : "hover:text-yellow-600"
+                }`
+              }
+            >
+              <FaUser size={20} className="inline" /> {user.name}
+            </NavLink>
+          ) : (
+            <NavLink
+              to="/login"
+              onClick={handleManu}
+              className={({ isActive }) =>
+                `block py-1 ${
+                  isActive
+                    ? "text-yellow-600 font-bold"
+                    : "hover:text-yellow-600"
+                }`
+              }
+            >
+              Sign Up / Sign In{" "}
+            </NavLink>
+          )}
+
+          <NavLink
+            to="/Card"
+            className={({ isActive }) =>
+              ` py-2 border-b flex justify-center items-center gap-1 ${
+                isActive ? "text-yellow-600 font-bold" : "hover:text-yellow-600"
+              }`
+            }
+            onClick={handleManu}
+          >
+            <AiOutlineShoppingCart size={20} className="inline" />
+            <sup className="text-lg ">{cartItems.length}</sup>
+          </NavLink>
 
           <ul className="mt-3 overflow-y-auto max-h-[70vh]">
             {categories.map((cat) => (

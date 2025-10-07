@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { FaAngleLeft } from "react-icons/fa6";
 import { useState } from "react";
-import axios from "axios";
+import axiosInstance from "../Api/AxiosConfig";
 function LoginPage() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -17,8 +17,8 @@ function LoginPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios
-      .post("http://localhost:4000/api/login", formData)
+    axiosInstance
+      .post("/api/login", formData)
       .then((res) => {
         console.log("login Successfully", res);
         localStorage.setItem("token", res.data.token);

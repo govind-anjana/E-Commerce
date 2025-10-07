@@ -4,12 +4,13 @@ import AddressCard from './AddressCard';
 import { IoMdAddCircleOutline } from "react-icons/io";
 import AddressModel from './AddressModel';
 import axios from 'axios';
+import axiosInstance from '../Api/AxiosConfig';
 function AddressmainPage() {
      const [showPopup, setShowPopup] = useState(false);
      const [AddressData,setAddressData]=useState([])
      const [editingId, setEditingId] = useState(null);
      const fetchApi=async()=>{
-          await axios.get("http://localhost:4000/api/address").then((res)=>setAddressData(res.data)).catch((err)=>console.error("err",err))
+          await axiosInstance.get("/api/address").then((res)=>setAddressData(res.data)).catch((err)=>console.error("err",err))
      }
       useEffect(() => {
         fetchApi()
@@ -37,9 +38,9 @@ function AddressmainPage() {
   // alert(editingId)
   try {
     if (editingId) {
-      await axios.put(`http://localhost:4000/api/addressupdate/${editingId}`, formData).then((res)=>console.log("Update Address",res)).catch((err)=>console.error("err",err))
+      await axiosInstance.put(`/api/addressupdate/${editingId}`, formData).then((res)=>console.log("Update Address",res)).catch((err)=>console.error("err",err))
     } else {
-      await axios.post("http://localhost:4000/api/address", formData);
+      await axiosInstance.post("/api/address", formData);
       alert("Address Saved Successfully");
     }
     setShowPopup(false);

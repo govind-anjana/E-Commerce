@@ -18,7 +18,7 @@ function Frame2() {
   {images.map((img, idx) => (
     <div
       key={idx}
-      className="flex-none w-38 h-26 md:w-[110px] md:h-[70px] flex justify-evenly items-center p-5 rounded bg-gray-100 border hover:shadow-lg"
+      className="flex-none w-20 h-15 md:w-[110px] md:h-[70px] flex justify-evenly items-center p-4 md:p-5 rounded bg-gray-100 border hover:shadow-lg"
     >
       <img
         src={img}

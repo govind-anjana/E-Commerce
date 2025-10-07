@@ -348,7 +348,7 @@ function Profile() {
 
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm">
-                  <thead className="font-semibold text-base text-gray-700">
+                  <thead className="font-semibold text-sm  text-gray-700">
                     <tr className="border-b  border-gray-300 shadow">
                       <th className="px-4 py-3 ">Order ID</th>
                       <th className="px-4 py-3 ">Date</th>
@@ -360,7 +360,7 @@ function Profile() {
                     {OrderData.map((order, index) => (
                       <tr
                         key={index}
-                        className="border-b border-gray-300 shadow font-medium"
+                        className="border-b border-gray-300 shadow text-sm"
                       >
                         <td className="px-4 py-3 ">{order.id}</td>
                         <td className="px-4 py-3 ">{order.date}</td>
@@ -381,8 +381,8 @@ function Profile() {
               </button>
             </div>
           ) : (
-            <div className="flex-2 text-start py-2 mt-9">
-              <div className="bg-gray-300 rounded flex justify-between font-semibold p-2">
+            <div className="flex-2 text-start py-2 mt-4">
+              <div className="bg-gray-300 rounded flex justify-between font-semibold text-sm md:text-base p-2">
                 <button
                   className={`px-4 py-2 rounded cursor-pointer ${
                     Oactive == "Items"
@@ -393,8 +393,8 @@ function Profile() {
                 >
                   Item Orderrd
                 </button>
-                <button
-                  className={`px-4 py-2 rounded cursor-pointer ${
+                <button  
+                  className={`hidden md:block px-4 py-2 rounded cursor-pointer ${
                     Oactive == "Invoice"
                       ? "bg-blue-500 text-white"
                       : "text-gray-600"
