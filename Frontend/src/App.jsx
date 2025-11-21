@@ -17,6 +17,7 @@ import Customer from './Component/Card/Customer'
 import ProductDetails from './Component/ProductDetails/ProductDetails'
 import Scrolling from './Component/Scrolling/Scrolling'
 import Profile from './Component/MyProfile/Profile'
+import TeezinesSign from './Component/Sign_Login_Page/TeezinesSign'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -28,6 +29,7 @@ function App() {
       
       <Routes>
       <Route path='/' element={<Silder/>}/>
+      <Route path='/Teezine' element={<TeezinesSign/>}/>
       <Route path='/login' element={<LoginPage/>}/>
       <Route path='/Sign' element={<SignUpPage/>}/>
       <Route path='/Card' element={<CardPage/>}/>

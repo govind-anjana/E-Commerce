@@ -108,7 +108,7 @@ function ProductDetails() {
           </div>
 
           <p className="text-xl font-semibold text-gray-800">
-            {items.name} (13-inch, 8GB RAM, 256GB SSD Storage)
+            {items.name}.
           </p>
 
           <table className="w-full text-gray-500 font-semibold">

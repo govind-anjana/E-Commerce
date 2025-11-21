@@ -25,7 +25,7 @@ function CardPage() {
           <IoShareSocialOutline size={28} />
         </button>
       </div>
-      <div className="flex flex-col md:flex-row p-4 my-1 gap-5">
+      <div className="flex flex-col md:flex-row p-2 my-1 gap-5">
         <div className="flex-1 flex flex-col">
           <div className="text-start">
             <h2 className="text-4xl font-bold pb-1">My Cart</h2>
@@ -34,12 +34,12 @@ function CardPage() {
               Number of Items :<span className="text-gray-600">({cartItems.length})</span>
             </h3>
           </div>
-          <div className="rounded-lg overflow-hidden">
+          <div className="rounded-lg  overflow-x-auto">
             <table className="w-full text-left text-sm border-separate border-spacing-4">
               <tbody>
                 {cartItems.map((item) => (
                   <tr key={item.id} className="">
-                    <td className=" w-20">
+                    <td className="w-20 ">
                       <img
                         src={item.img || "https://via.placeholder.com/100"}
                         className="w-20 h-22 p-1 rounded shadow"
@@ -85,6 +85,7 @@ function CardPage() {
                         <AiOutlineDelete size={20} />
                       </button>
                     </td>
+                 
                   </tr>
                 ))}
               </tbody>

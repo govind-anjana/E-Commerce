@@ -27,7 +27,7 @@ function Profile() {
     newPassword: "",
     repeatPassword: "",
   });
-    
+
   useEffect(() => {
     if (user) {
       setUserName(user.name);
@@ -81,7 +81,7 @@ function Profile() {
       border: "border-pink-100",
     },
   ];
-   
+
   const OrderData = [
     {
       id: "#3456_568",
@@ -169,7 +169,6 @@ function Profile() {
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
   };
-
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-white">
@@ -393,7 +392,7 @@ function Profile() {
                 >
                   Item Orderrd
                 </button>
-                <button  
+                <button
                   className={`hidden md:block px-4 py-2 rounded cursor-pointer ${
                     Oactive == "Invoice"
                       ? "bg-blue-500 text-white"
@@ -492,13 +491,9 @@ function Profile() {
             </div>
           ))}
 
-        {active == 3 && <AddressmainPage/>}
+        {active == 3 && <AddressmainPage />}
 
-        {active == 4 && (
-          <div className="flex-2 text-start py-2">
-            
-          </div>
-        )}
+        {active == 4 && <div className="flex-2 text-start py-2"></div>}
       </div>
     </div>
   );

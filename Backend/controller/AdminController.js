@@ -36,7 +36,7 @@ export const Admin=async(req,res)=>{
   const isMatch = await bcrypt.compare(password, admin.password);
   if (!isMatch) return res.status(400).json({ message: "Invalid password" });
 
-  const token = jwt.sign({ id: admin._id, username: admin.username }, process.env.JWT_SECRET, { expiresIn: "2h" });
+  const token = jwt.sign({ id: admin._id, username: admin.username }, process.env.JWT_SECRET, { expiresIn: "7d" });
   res.json({ message: "Login successful", token });
 }
 

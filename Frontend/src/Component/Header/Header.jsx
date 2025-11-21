@@ -44,7 +44,6 @@ function Header() {
   function handleManu() {
     setMenuOpen(!menuOpen);
   }
-
   return (
     <header className="bg-gray-50 w-full sticky top-0 z-50">
       <div className="flex justify-between items-center mx-5 py-3 font-semibold">
@@ -64,6 +63,14 @@ function Header() {
             }
           >
             MY Deals
+          </NavLink>
+          <NavLink
+            to="/Teezine"
+            className={({ isActive }) =>
+              isActive ? "text-yellow-600 font-bold" : "hover:text-yellow-600"
+            }
+          >
+      Teezines
           </NavLink>
 
           {user ? (
